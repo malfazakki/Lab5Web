@@ -1,18 +1,16 @@
-<?php
-require_once 'data_barang.php';
+    <?php
+    require_once "data_barang.php";
+    $dataBarang = new DataBarang();
+    require 'header.php';
 
-$dataBarang = new DataBarang();
-$data = $dataBarang->getAllData();
-
-require 'header.php';
-?>
-
-<body>
+    // Menampilkan data
+    $barangList = $dataBarang->getAllDataBarang();
+    ?>
     <div class="tabel-container">
         <h1>Data Barang</h1>
         <table class="tabel">
             <tr>
-                <th class='id_barang'>ID</th>
+                <th class="id_barang">ID</th>
                 <th>Gambar</th>
                 <th>Nama</th>
                 <th>Kategori</th>
@@ -21,22 +19,22 @@ require 'header.php';
                 <th>Stok</th>
                 <th>Aksi</th>
             </tr>
-            <?php foreach ($data as $row) { ?>
+            <?php foreach ($barangList as $barang) : ?>
                 <tr>
-                    <td class="id_barang"><?php echo $row['id_barang']; ?></td>
-                    <td><?php echo $row['gambar']; ?></td>
-                    <td><?php echo $row['nama']; ?></td>
-                    <td><?php echo $row['kategori']; ?></td>
-                    <td><?php echo $row['harga_beli']; ?></td>
-                    <td><?php echo $row['harga_jual']; ?></td>
-                    <td><?php echo $row['stok']; ?></td>
+                    <td class="id_barang"><?php echo $barang['id_barang']; ?></td>
+                    <td><?php echo $barang['gambar']; ?></td>
+                    <td><?php echo $barang['nama']; ?></td>
+                    <td><?php echo $barang['kategori']; ?></td>
+                    <td><?php echo $barang['harga_beli']; ?></td>
+                    <td><?php echo $barang['harga_jual']; ?></td>
+                    <td><?php echo $barang['stok']; ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $row['id_barang']; ?>">Edit</a>
-                        <a href="hapus.php?id=<?php echo $row['id_barang']; ?>">Hapus</a>
+                        <a href="form.php?id=<?php echo $barang['id_barang']; ?>">Edit</a>
+                        <a href="hapus.php?id_barang=<?php echo $barang['id_barang']; ?>" onclick="return confirm('Yakin ingin menghapus data?')" ;>Hapus</a>
                     </td>
                 </tr>
-            <?php } ?>
+            <?php endforeach; ?>
         </table>
-        <a href="tambah.php" class="tambah">Tambah Data</a>
+        <a href="form.php" class="tambah">Tambah Barang</a>
     </div>
-    <?php require 'footer.php'; ?>
+    <?php require 'footer.php' ?>

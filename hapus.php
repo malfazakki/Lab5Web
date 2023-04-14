@@ -1,19 +1,13 @@
 <?php
-require_once 'data_barang.php';
-
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    require_once "data_barang.php";
     $dataBarang = new DataBarang();
-    $result = $dataBarang->deleteData($id);
 
-    if ($result) {
-        header('Location: index.php');
-        exit();
-    } else {
-        echo 'Gagal menghapus data';
+    // Cek apakah ada data yang dikirimkan melalui URL
+    if (isset($_GET['id_barang'])) {
+        $id = $_GET['id_barang'];
+        $result = $dataBarang->deleteDataBarang($id);
+        if ($result) {
+            header("Location: index.php");
+            exit;
+        }
     }
-} else {
-    header('Location: index.php');
-    exit();
-}
-?>

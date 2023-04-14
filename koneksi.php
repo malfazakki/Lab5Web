@@ -1,16 +1,16 @@
 <?php
-class Database
+
+class DatabaseConnection
 {
-    private $host = 'localhost';
-    private $user = 'root';
-    private $password = '';
-    private $dbname = 'latihan1';
+    private $host = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $database = "latihan1";
     private $conn;
 
     public function __construct()
     {
-        $this->conn = new mysqli($this->host, $this->user, $this->password, $this->dbname);
-
+        $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database);
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
@@ -20,5 +20,9 @@ class Database
     {
         return $this->conn;
     }
+
+    public function closeConnection()
+    {
+        $this->conn->close();
+    }
 }
-?>
