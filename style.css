@@ -130,6 +130,28 @@ body h1 {
 /* MAIN CONTENT END */
 
 
+/* FORM BARANG */
+.tombol {
+    display: inline-block;
+}
+.judul {
+    margin-top: 40px;
+}
+.container-form {
+    margin: auto;
+    /* background-color: #125252; */
+    width: 60%;
+}
+.form {
+    padding: 20px;
+    position: relative;
+    right: 50%;
+    left: 35%;
+}
+
+/* FORM BARANG END */
+
+
 
 /* FOOTER */
 footer {
@@ -141,3 +163,4 @@ footer {
     color: #F0F0F0;
     text-align: center;
 }
+
